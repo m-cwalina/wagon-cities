@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import selectCity from '../actions/index'
 
 class City extends Component {
   render() {
@@ -10,4 +14,8 @@ class City extends Component {
   }
 }
 
-export default City;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectCity }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(City);

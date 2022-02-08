@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import City from '../containers/city';
 
 class CityList extends Component {
-  
+
   render() {
     return (
       <div className = "cities">
@@ -13,6 +13,12 @@ class CityList extends Component {
       </div>
     );
   }
-}
+};
 
-export default CityList;
+  function mapStateToProps(state) {
+    return {
+      cities: state.cities
+    };
+  }
+
+export default connect(mapStateToProps)(cityList);
