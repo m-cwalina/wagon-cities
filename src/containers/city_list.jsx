@@ -5,20 +5,27 @@ import { bindActionCreators } from 'redux';
 import City from '../containers/city';
 
 class CityList extends Component {
+  renderList() {
+    return this.props.cities.map((city) => {
+      return (
+        <City key={city.name} city={city} />
+      );
+    });
+  };
 
   render() {
     return (
-      <div className = "cities">
-        {this.props.cities.map(city)} => <City city={city} key={city.name} />}
-      </div>
+      <ul className="list-group cities">
+        {this.renderList()}
+      </ul>
     );
   }
 };
 
-  function mapStateToProps(state) {
-    return {
-      cities: state.cities
-    };
-  }
+function mapStateToProps(state) {
+  return {
+    cities: state.cities
+  };
+}
 
-export default connect(mapStateToProps)(cityList);
+export default connect(mapStateToProps)(CityList);
